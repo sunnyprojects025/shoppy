@@ -251,22 +251,22 @@ class _ProductViewScreenState extends State<ProductViewScreen> {
                                                                     ),
                                                                     onTap:
                                                                         () async {
-                                                                      details[index]
-                                                                                  .quantity !=
-                                                                              0
-                                                                          ? await Provider.of<Detailsprovider>(context, listen: false).minusproductTocart(
-                                                                              details[index]
-                                                                                  .id,
-                                                                              details[index]
-                                                                                  .unitpr)
-                                                                          : null;
-                                                                      setState(() {
-                                                                        details[index].quantity !=
-                                                                                0
-                                                                            ? details[index]
-                                                                                .quantity--
-                                                                            : null;
-                                                                      });
+                                                                      // details[index]
+                                                                      //             .quantity !=
+                                                                      //         0
+                                                                      //     ? await Provider.of<Detailsprovider>(context, listen: false).minusproductTocart(
+                                                                      //         details[index]
+                                                                      //             .id,
+                                                                      //         details[index]
+                                                                      //             .unitpr)
+                                                                      //     : null;
+                                                                      // setState(() {
+                                                                      //   details[index].quantity !=
+                                                                      //           0
+                                                                      //       ? details[index]
+                                                                      //           .quantity--
+                                                                      //       : null;
+                                                                      // });
                                                                     }),
                                           
                                                                 Container(
@@ -303,24 +303,24 @@ class _ProductViewScreenState extends State<ProductViewScreen> {
                                                                   child: IconButton(
                                                                       onPressed:
                                                                           () async {
-                                                                        await Provider.of<Detailsprovider>(context, listen: false).addProductToCart(
-                                                                            details[index]
-                                                                                .id,
-                                                                            details[index]
-                                                                                .name,
-                                                                            details[index]
-                                                                                .unitpr,
-                                                                            details[index]
-                                                                                .specialpr,
-                                                                            details[index]
-                                                                                .quantity,
-                                                                            details[index]
-                                                                                .variant);
-                                                                        setState(
-                                                                            () {
-                                                                          details[index]
-                                                                              .quantity++;
-                                                                        });
+                                                                        // await Provider.of<Detailsprovider>(context, listen: false).addProductToCart(
+                                                                        //     details[index]
+                                                                        //         .id,
+                                                                        //     details[index]
+                                                                        //         .name,
+                                                                        //     details[index]
+                                                                        //         .unitpr,
+                                                                        //     details[index]
+                                                                        //         .specialpr,
+                                                                        //     details[index]
+                                                                        //         .quantity,
+                                                                        //     details[index]
+                                                                        //         .variant);
+                                                                        // setState(
+                                                                        //     () {
+                                                                        //   details[index]
+                                                                        //       .quantity++;
+                                                                        // });
                                                                       },
                                                                       icon: Icon(
                                                                         Icons.add,

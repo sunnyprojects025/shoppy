@@ -148,32 +148,33 @@ class _DetailsScreenState extends State<DetailsScreen> {
                             child: Row(
                               //   mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                Container(
-                                  margin: EdgeInsets.only(
-                                      bottom: deviceSize.height),
-                                  child: IconButton(
-                                      onPressed: () async {
-                                        details[widget.index].quantity != 0
-                                            ? await Provider.of<
-                                                        Detailsprovider>(
-                                                    context,
-                                                    listen: false)
-                                                .minusproductTocart(
-                                                    details[widget.index].id,
-                                                    details[widget.index]
-                                                        .unitpr)
-                                            : null;
-                                        setState(() {
-                                          details[widget.index].quantity != 0
-                                              ? details[widget.index].quantity--
-                                              : null;
-                                        });
-                                      },
-                                      icon: Icon(
-                                        Icons.minimize,
-                                        color: Colors.orange[400],
-                                      )),
-                                ),
+                                GestureDetector(
+                                            child: Container(
+                                              margin: EdgeInsets.only(bottom: deviceSize.height/4/4/4,left: deviceSize.width/4/4/2),
+                                              child:  Icon(
+                                                 Icons.minimize,
+                                                 color: Colors.orange[400],
+                                               )
+                                            ),
+                                             onTap: () async {
+                                               details[widget.index].quantity != 0
+                                                   ? await Provider.of<
+                                                               Detailsprovider>(
+                                                           context,
+                                                           listen: false)
+                                                       .minusproductTocart(
+                                                           details[widget.index].id,
+                                                           details[widget.index]
+                                                               .unitpr)
+                                                   : null;
+                                               setState(() {
+                                                 details[widget.index].quantity != 0
+                                                     ? details[widget.index]
+                                                         .quantity--
+                                                     : null;
+                                               });}
+                                          ),
+                               
 
                                 Container(
                                   margin: EdgeInsets.only(

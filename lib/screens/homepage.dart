@@ -120,30 +120,30 @@ class _HomepageState extends State<Homepage> {
                         itemCount: details.length,
                         itemBuilder: (ctx, index) {
                           print(details);
-                          return GestureDetector(
-                            child: Card(
-                              elevation: .2,
-                              color: Color(0xFFF8F8F8),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20)),
-                              margin: EdgeInsets.only(
-                                  left: deviceSize.width / 4 / 4,
-                                  right: deviceSize.width / 4 / 4,
-                                  top: deviceSize.height / 4 / 4 / 4,
-                                  bottom: deviceSize.height / 4 / 4 / 4),
-                              child: Container(
-                                  width: double.infinity,
-                                  height: deviceSize.height / 4 * .8,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          SizedBox(
-                                            width: deviceSize.width / 4 / 4 / 2,
-                                          ),
-                                          Container(
+                          return Card(
+                            elevation: .2,
+                            color: Color(0xFFF8F8F8),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20)),
+                            margin: EdgeInsets.only(
+                                left: deviceSize.width / 4 / 4,
+                                right: deviceSize.width / 4 / 4,
+                                top: deviceSize.height / 4 / 4 / 4,
+                                bottom: deviceSize.height / 4 / 4 / 4),
+                            child: Container(
+                                width: double.infinity,
+                                height: deviceSize.height / 4 * .8,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        SizedBox(
+                                          width: deviceSize.width / 4 / 4 / 2,
+                                        ),
+                                        GestureDetector(
+                                          child: Container(
                                             height: deviceSize.height / 4 / 3,
                                             width: deviceSize.width / 4 * .9,
                                             decoration: BoxDecoration(
@@ -159,148 +159,149 @@ class _HomepageState extends State<Homepage> {
                                               ),
                                             ),
                                           ),
-                                          SizedBox(
-                                            width: deviceSize.width / 4 / 4 / 2,
-                                          ),
-                                          Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(details[index].name.toString(),
-                                                  overflow:
-                                                      TextOverflow.ellipsis),
-                                              SizedBox(
-                                                height:
-                                                    deviceSize.height / 4 / 4 / 4,
-                                              ),
-                                              Text(
-                                                details[index].unitpr.toString(),
-                                                overflow: TextOverflow.ellipsis,
-                                              ),
-                                              SizedBox(
-                                                height:
-                                                    deviceSize.height / 4 / 4 / 4,
-                                              ),
-                                              Text(
-                                                details[index]
-                                                    .specialpr
-                                                    .toString(),
-                                                overflow: TextOverflow.ellipsis,
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                      Container(
-                                        // padding: EdgeInsets.only(bottom: deviceSize.height/4/4/3),
-                                        height: deviceSize.height / 4 / 4,
-                                        margin: EdgeInsets.only(
-                                            top: deviceSize.height / 4 / 3),
-                          
-                                        decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
-                                       // alignment: Alignment.center,
-                                        child: Row(
-                                          //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                          children: [
-                                            Container(
-                                              margin: EdgeInsets.only(
-                                                  bottom:
-                                                      deviceSize.height ),
-                                              child: IconButton(
-                                                  onPressed: () async {
-                                                    details[index].quantity != 0
-                                                        ? await Provider.of<
-                                                                    Detailsprovider>(
-                                                                context,
-                                                                listen: false)
-                                                            .minusproductTocart(
-                                                                details[index].id,
-                                                                details[index]
-                                                                    .unitpr)
-                                                        : null;
-                                                    setState(() {
-                                                      details[index].quantity != 0
-                                                          ? details[index]
-                                                              .quantity--
-                                                          : null;
-                                                    });
-                                                  },
-                                                  icon: Icon(
-                                                    Icons.minimize,
-                                                    color: Colors.orange[400],
-                                                  )),
-                                            ),
-                          
-                                            Container(
-                                              margin: EdgeInsets.only(
-                                                  top: deviceSize.height /
-                                                      4 /
-                                                      4 /
-                                                      4 /
-                                                      2),
-                                              padding: EdgeInsets.all(8),
-                                              alignment: Alignment.center,
-                                              child: Text(
-                                                details[index]
-                                                    .quantity
-                                                    .toString(),
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.bold),
-                                              ),
-                                            ),
-                          
-                                            IconButton(
-                                                onPressed: () async {
-                                                  await Provider.of<
-                                                              Detailsprovider>(
-                                                          context,
-                                                          listen: false)
-                                                      .addProductToCart(
-                                                          details[index].id,
-                                                          details[index].name,
-                                                          details[index].unitpr,
-                                                          details[index]
-                                                              .specialpr,
-                                                          details[index].quantity,
-                                                          details[index].variant);
-                                                  setState(() {
-                                                    details[index].quantity++;
-                                                  });
-                                                },
-                                                icon: Icon(
-                                                  Icons.add,
-                                                  color: Colors.orange[400],
-                                                )),
-                                            // SizedBox(
-                                            //   width: deviceSize.width / 4 / 4 / 4,
-                                            // )
-                                          ],
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: deviceSize.width / 4 / 4 / 4 / 3,
-                                      )
-                                    ],
-                                  )),
-                            ),
-                            onTap: (){
-                                Navigator.push(context,
-                            MaterialPageRoute(builder: (ctx) {
+                                           onTap: (){
+                              Navigator.push(context,
+                          MaterialPageRoute(builder: (ctx) {
                           return DetailsScreen(
-                            index: index,
-                            title: details[index].name,
+                          index: index,
+                          title: details[index].name,
                           );
                         })).then((value) {
                           setState(() {
-                            refreshdata();
+                          refreshdata();
                           });
                         });
-                            },
+                          },
+                                        ),
+                                        SizedBox(
+                                          width: deviceSize.width / 4 / 4 / 2,
+                                        ),
+                                        Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(details[index].name.toString(),
+                                                overflow:
+                                                    TextOverflow.ellipsis),
+                                            SizedBox(
+                                              height:
+                                                  deviceSize.height / 4 / 4 / 4,
+                                            ),
+                                            Text(
+                                              details[index].unitpr.toString(),
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                            SizedBox(
+                                              height:
+                                                  deviceSize.height / 4 / 4 / 4,
+                                            ),
+                                            Text(
+                                              details[index]
+                                                  .specialpr
+                                                  .toString(),
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    Container(
+                                      // padding: EdgeInsets.only(bottom: deviceSize.height/4/4/3),
+                                      height: deviceSize.height / 4 / 4,
+                                      margin: EdgeInsets.only(
+                                          top: deviceSize.height / 4 / 3),
+                          
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                     // alignment: Alignment.center,
+                                      child: Row(
+                                       // crossAxisAlignment: CrossAxisAlignment.center,
+                                        //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                        children: [
+                                          GestureDetector(
+                                            child: Container(
+                                              margin: EdgeInsets.only(bottom: deviceSize.height/4/4/4,left: deviceSize.width/4/4/2),
+                                              child:  Icon(
+                                                 Icons.minimize,
+                                                 color: Colors.orange[400],
+                                               )
+                                            ),
+                                             onTap: () async {
+                                               details[index].quantity != 0
+                                                   ? await Provider.of<
+                                                               Detailsprovider>(
+                                                           context,
+                                                           listen: false)
+                                                       .minusproductTocart(
+                                                           details[index].id,
+                                                           details[index]
+                                                               .unitpr)
+                                                   : null;
+                                               setState(() {
+                                                 details[index].quantity != 0
+                                                     ? details[index]
+                                                         .quantity--
+                                                     : null;
+                                               });}
+                                          ),
+                                            
+                                         
+                          
+                                          Container(
+                                            margin: EdgeInsets.only(
+                                                top: deviceSize.height /
+                                                    4 /
+                                                    4 /
+                                                    4 /
+                                                    2),
+                                            padding: EdgeInsets.all(8),
+                                            alignment: Alignment.center,
+                                            child: Text(
+                                              details[index]
+                                                  .quantity
+                                                  .toString(),
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                          
+                                          IconButton(
+                                              onPressed: () async {
+                                                await Provider.of<
+                                                            Detailsprovider>(
+                                                        context,
+                                                        listen: false)
+                                                    .addProductToCart(
+                                                        DateTime.now().toString(),
+                                                        details[index].name,
+                                                        details[index].unitpr,
+                                                        details[index]
+                                                            .specialpr,
+                                                        details[index].quantity,
+                                                        details[index].variant);
+                                                setState(() {
+                                                  details[index].quantity++;
+                                                });
+                                              },
+                                              icon: Icon(
+                                                Icons.add,
+                                                color: Colors.orange[400],
+                                              )),
+                                          // SizedBox(
+                                          //   width: deviceSize.width / 4 / 4 / 4,
+                                          // )
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: deviceSize.width / 4 / 4 / 4 / 3,
+                                    )
+                                  ],
+                                )),
                           );
                         }),
           ),
